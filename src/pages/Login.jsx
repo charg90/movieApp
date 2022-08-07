@@ -1,9 +1,12 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-
+import { loginCredential } from "./../Credentials/loginCredentials";
 const Login = () => {
+  const navigate = useNavigate();
   const handlerSubmit = (e) => {
+    console.log(e.target);
     e.preventDefault();
     const regexEmail =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -18,34 +21,89 @@ const Login = () => {
       console.log("rellanar bien el campo emails");
       return;
     }
-    if (email !== "challenge@alkemy.org" || password !== "react") {
+    if (
+      email !== loginCredential.username ||
+      password !== loginCredential.password
+    ) {
       console.log("credenciales invalidas");
       return;
     }
 
-    axios
-      .post("http://challange-react.alkemy.org", { email, password })
-      .then((res) => {
-        console.log(res.data);
-        const token = res.data;
-        localStorage.setItem("token", token);
-      })
-      .catch((e) => {
-        swal("error");
-      });
+    if (
+      email === loginCredential.username &&
+      password === loginCredential.password
+    ) {
+      sessionStorage.setItem("token", loginCredential.token);
+      navigate("/dashboard");
+      console.log("acesso verificado");
+    }
+    // axios
+    //   .post("http://challange-react.alkemy.org", { email, password })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     const token = res.data;
+    //     localStorage.setItem("token", token);
+    //   })
+    //   .catch((e) => {
+    //     swal("error");
+    //   });
   };
 
   return (
-    <div className="App">
-      <h1>Formulario</h1>
-      <form onSubmit={handlerSubmit}>
-        <input type="text" name="email" />
-        <br />
-        <input type="password" name="password" />
-        <br />
-        <button type="submit">enviar</button>
-      </form>
-    </div>
+    <form onSubmit={handlerSubmit}>
+      <div
+        className="container vh-50 d-flex justify-content-center align-items-center"
+        style={{ height: "80vh" }}
+      >
+        <div className="row ">
+          <div className="col-12">
+            <div className="mb-3">
+              <label for="exampleInputEmail1" className="form-label">
+                Email address
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                name="email"
+              />
+            </div>
+            <div className="mb-3">
+              <label for="exampleInputPassword1" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="exampleInputPassword1"
+                name="password"
+              />
+            </div>
+
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    // <div classNameName="h-100 d-flex flex-column align-items-center mt-5">
+    //   <h1>Formulario</h1>
+    //   <form onSubmit={handlerSubmit}>
+    //     <input type="text" name="email" />
+    //     <br />
+    //     <input type="password" name="password" />
+    //     <br />
+    //     <button
+    //       type="submit"
+    //       classNameName="btn btn-block btn-primary mt-2 d justify-content-center"
+    //     >
+    //       enviar
+    //     </button>
+    //   </form>
+    // </div>
   );
 };
 
