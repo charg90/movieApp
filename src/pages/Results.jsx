@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const Results = () => {
   const params = useParams();
   const nameMovie = params.movie;
+
   const [movie, setMovie] = useState([]);
 
   console.log(params.movie);
@@ -23,7 +24,7 @@ const Results = () => {
         setMovie(movies);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [nameMovie]);
   return (
     <>
       {movie.length === 0 && <p>no hay resultados</p>}

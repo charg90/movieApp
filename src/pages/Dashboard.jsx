@@ -1,16 +1,40 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import useStore from "./../zustand/stores/favoriteMovies";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import "./styles.css";
 
-const Dashboard = ({ addOrRemoveFromFavs }) => {
-  // `https://api.themoviedb.org/3/find/${movie.id}?api_key=ef914df2994fae559350d18795448351&language=en-US`
+const Dashboard = () => {
+  const favorite = useStore((state) => state.favoriteMovies);
+  const addFavorite = useStore((state) => state.addFavorite);
+  const deleteMovie = useStore((state) => state.deleteMovie);
   const [movieList, setMovieList] = useState([]);
   let token = sessionStorage.getItem("token");
 
+  const addOrRemoveFromFavs = (e) => {
+    const id = e.currentTarget.dataset.movieId;
+    const parentInfo = e.currentTarget.parentElement;
+    const imgUrl = parentInfo.querySelector("img").getAttribute("src");
+    const title = parentInfo.querySelector("h5").innerText;
+    const overView = parentInfo.querySelector("p").innerText;
+
+    const favoriteMovieInfo = {
+      id,
+      imgUrl,
+      title,
+      overView,
+    };
+    addFavorite(favoriteMovieInfo);
+  };
+  const deleteMovie1 = (e) => {
+    const id = e.currentTarget.dataset.movieId;
+    deleteMovie(id);
+  };
+
   useEffect(() => {
+    console.log("useEfe", favorite);
     const endPoint =
       "https://api.themoviedb.org/3/discover/movie?api_key=ef914df2994fae559350d18795448351&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1";
     axios
@@ -19,7 +43,7 @@ const Dashboard = ({ addOrRemoveFromFavs }) => {
       .catch((e) => {
         swal(<h2>Hubo errores,intente mas tarde</h2>);
       });
-  }, [setMovieList]);
+  }, [setMovieList, favorite]);
 
   return (
     <>
@@ -54,6 +78,13 @@ const Dashboard = ({ addOrRemoveFromFavs }) => {
                     data-movie-id={movie.id}
                   >
                     🖤
+                  </button>
+                  <button
+                    className=""
+                    onClick={deleteMovie1}
+                    data-movie-id={movie.id}
+                  >
+                    eliminar
                   </button>
                 </div>
               </div>
