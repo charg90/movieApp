@@ -1,17 +1,22 @@
 import create from "zustand";
+import axios from "axios";
 import { devtools } from "zustand/middleware";
 
 const favoritesStore = (set) => ({
+  movies: [],
   favoriteMovies: [],
 
+  fetchMovies: async (url) => {
+    const response = await axios.get(url);
+    set({ movies: response.data.results });
+  },
+
   addFavorite: (movie) => {
-    console.log(movie.id);
     set((state) => ({
       favoriteMovies: [...state.favoriteMovies, movie],
     }));
   },
   deleteMovie: (id) => {
-    console.log("ssds", id);
     set((state) => ({
       favoriteMovies: state.favoriteMovies.filter((f) => f.id !== id),
     }));
@@ -21,9 +26,3 @@ const favoritesStore = (set) => ({
 const useStore = create(devtools(favoritesStore));
 
 export default useStore;
-
-// addFavorite: (movie) =>
-// set((state) => (
-//   { favoriteMovies: [...state.favoriteMovies, movie] }
-
-//   )),

@@ -1,12 +1,11 @@
 import React from "react";
-import axios from "axios";
+import styles from "./../styles/login.module.css";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { loginCredential } from "./../Credentials/loginCredentials";
 const Login = () => {
   const navigate = useNavigate();
   const handlerSubmit = (e) => {
-    console.log(e.target);
     e.preventDefault();
     const regexEmail =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -37,29 +36,22 @@ const Login = () => {
       navigate("/dashboard");
       console.log("acesso verificado");
     }
-    // axios
-    //   .post("http://challange-react.alkemy.org", { email, password })
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     const token = res.data;
-    //     localStorage.setItem("token", token);
-    //   })
-    //   .catch((e) => {
-    //     swal("error");
-    //   });
   };
 
   return (
-    <form onSubmit={handlerSubmit}>
+    <form onSubmit={handlerSubmit} c>
       <div
         className="container vh-50 d-flex justify-content-center align-items-center"
         style={{ height: "80vh" }}
       >
         <div className="row ">
-          <div className="col-12">
+          <div className="col-12 d-flex flex-column">
             <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">
-                Email address
+              <label
+                htmlFor="exampleInputEmail1"
+                className={`${styles.colorTextLabel} form-label`}
+              >
+                Email address:
               </label>
               <input
                 type="email"
@@ -70,8 +62,11 @@ const Login = () => {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="exampleInputPassword1" className="form-label">
-                Password
+              <label
+                htmlFor="exampleInputPassword1"
+                className={`${styles.colorTextLabel} form-label`}
+              >
+                Password:
               </label>
               <input
                 type="password"
@@ -81,7 +76,10 @@ const Login = () => {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className={`${styles.submitButton} btn  btn-primary`}
+            >
               Submit
             </button>
           </div>

@@ -1,0 +1,25 @@
+.favoriteBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: none;
+  font-size: 20px;
+}
+
+.submitFormButton {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(99, 12, 168, 1) 35%,
+    rgba(104, 46, 122, 1) 100%
+  );
+  outline: none;
+  border: none;
+}

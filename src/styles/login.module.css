@@ -1,0 +1,16 @@
+.colorTextLabel {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.submitButton {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(99, 12, 168, 1) 35%,
+    rgba(104, 46, 122, 1) 100%
+  );
+  outline: none;
+  border: none;
+}
