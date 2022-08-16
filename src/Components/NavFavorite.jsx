@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
-
 import useFavoriteMovies from "./../zustand/stores/favoriteMovies";
+import styles from "./../styles/navFavorites.module.css";
 const NavFavorite = () => {
   const favoriteMovies = useFavoriteMovies((state) => state.favoriteMovies);
   const deleteFavMovie = useFavoriteMovies((state) => state.deleteMovie);
@@ -12,9 +12,9 @@ const NavFavorite = () => {
 
   return (
     <>
-      <li className="nav-item dropdown d-flex  align-items-center justify-content-center">
+      <li className="nav-item dropdown d-flex  align-items-center justify-content-center mx-1">
         <a
-          className="nav-link dropdown-toggle"
+          className={`${styles.icon} nav-link dropdown-toggle`}
           href="#"
           id="navbarDropdown"
           role="button"
@@ -34,10 +34,10 @@ const NavFavorite = () => {
                 <img
                   src={movies.imgUrl}
                   alt="no se encontro la pelicula"
-                  style={{ height: "5rem" }}
+                  style={{ height: "7rem" }}
                 />
-                <p>{movies.title}</p>
-                <p>{movies.active}</p>
+                <p className="align-self-center mx-2">{movies.title}</p>
+
                 <button
                   className="btn btn-block"
                   onClick={() => deleteFavMovie(movies.id)}

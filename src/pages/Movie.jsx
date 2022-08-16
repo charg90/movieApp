@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import styles from "./../styles/movie.module.css";
 const Movie = () => {
   let token = sessionStorage.getItem("token");
   const [movie, setMovie] = useState(null);
@@ -20,7 +21,6 @@ const Movie = () => {
     <>
       {!token && <Navigate to="/" />}
 
-      <div>Movie Details</div>
       {!movie && <p>cargando...</p>}
       {movie && (
         <div
@@ -35,7 +35,9 @@ const Movie = () => {
                 alt="..."
               />
             </div>
-            <div className="col-8">
+            <div
+              className={`${styles.movieInfo} col-8 d-flex flex-column justify-content-center align-items-center`}
+            >
               <h5>Titulo: {movie.original_title}</h5>
               <h5>fecha de estreno : {movie.release_date}</h5>
               <h5>Genero:</h5>

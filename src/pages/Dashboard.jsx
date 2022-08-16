@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useStore from "./../zustand/stores/favoriteMovies";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 import styles from "./../styles/dashboard.module.css";
 
 const Dashboard = () => {
@@ -18,12 +19,16 @@ const Dashboard = () => {
     const imgUrl = parentInfo.querySelector("img").getAttribute("src");
     const title = parentInfo.querySelector("h5").innerText;
     const overView = parentInfo.querySelector("p").innerText;
+    const duplicate = favorite.find((f) => f.id === id);
+    if (duplicate) {
+      swal("Ya tiene esta pelicula en favoritos");
+      return;
+    }
     const favoriteMovieInfo = {
       id,
       imgUrl,
       title,
       overView,
-      active: true,
     };
     addFavorite(favoriteMovieInfo);
   };
@@ -42,7 +47,7 @@ const Dashboard = () => {
         <div className="row">
           {movieList.map((movie) => {
             return (
-              <div className=" col-sm-12 col-md-4 col-lg-3  " key={movie.id}>
+              <div className=" col-sm-12 col-md-4 col-lg-3   " key={movie.id}>
                 <div className="card my-3">
                   <img
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

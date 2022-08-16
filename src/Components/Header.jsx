@@ -4,16 +4,17 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import NavFavorite from "./NavFavorite";
 //css
-import styles from "./../styles/navBar.modules.css";
+import styles from "./../styles/navBar.module.css";
 const Header = () => {
   console.log(styles);
   return (
     <>
-      <header>
-        <nav
-          className={`${styles.backgroundNavbar} navbar navbar-expand-lg navbar-light`}
-        >
-          <Link className="navbar-brand text-white" to="/">
+      <header className="d-flex justify-content-center">
+        <nav className={` navbar navbar-expand-lg navbar-light  `}>
+          <Link
+            className={`${styles.navBarLetters} navbar-brand text-white`}
+            to="/"
+          >
             Movies
           </Link>
           <button
@@ -30,12 +31,18 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <Link className="nav-link text-white" to="/">
+                <Link
+                  to="/"
+                  className={`${styles.navBarLetters} nav-link text-white`}
+                >
                   home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/dashboard">
+                <Link
+                  className={`${styles.navBarLetters} nav-link text-white`}
+                  to="/dashboard"
+                >
                   Dashboard
                 </Link>
               </li>
