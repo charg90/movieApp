@@ -1,14 +1,9 @@
 import React from "react";
-import { useEffect } from "react";
 import useFavoriteMovies from "./../zustand/stores/favoriteMovies";
 import styles from "./../styles/navFavorites.module.css";
 const NavFavorite = () => {
   const favoriteMovies = useFavoriteMovies((state) => state.favoriteMovies);
   const deleteFavMovie = useFavoriteMovies((state) => state.deleteMovie);
-
-  useEffect(() => {
-    console.log(favoriteMovies.length);
-  }, []);
 
   return (
     <>
@@ -24,7 +19,11 @@ const NavFavorite = () => {
           ❤️
         </a>
         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-          {favoriteMovies.length === 0 && <span>no hay favoritos </span>}
+          {favoriteMovies.length === 0 && (
+            <span className="d-flex justify-content-center">
+              no hay favoritos{" "}
+            </span>
+          )}
           {favoriteMovies.map((movies) => {
             return (
               <li

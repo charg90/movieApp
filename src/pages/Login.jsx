@@ -3,7 +3,10 @@ import styles from "./../styles/login.module.css";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { loginCredential } from "./../Credentials/loginCredentials";
+import useStore from "./../zustand/stores/favoriteMovies";
+import { useEffect } from "react";
 const Login = () => {
+  const fetchMovies = useStore((state) => state.fetchMovies);
   const navigate = useNavigate();
   const handlerSubmit = (e) => {
     e.preventDefault();
@@ -37,6 +40,11 @@ const Login = () => {
       console.log("acesso verificado");
     }
   };
+  useEffect(() => {
+    const endPoint =
+      "https://api.themoviedb.org/3/discover/movie?api_key=ef914df2994fae559350d18795448351&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1";
+    fetchMovies(endPoint);
+  });
 
   return (
     <form onSubmit={handlerSubmit} c>
