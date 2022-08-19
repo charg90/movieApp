@@ -6,7 +6,6 @@ import NavFavorite from "./NavFavorite";
 //css
 import styles from "./../styles/navBar.module.css";
 const Header = () => {
-  console.log(styles);
   return (
     <>
       <header className="d-flex justify-content-center">

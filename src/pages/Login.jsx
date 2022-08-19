@@ -1,4 +1,5 @@
 import React from "react";
+
 import styles from "./../styles/login.module.css";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
@@ -41,9 +42,7 @@ const Login = () => {
     }
   };
   useEffect(() => {
-    const endPoint =
-      "https://api.themoviedb.org/3/discover/movie?api_key=ef914df2994fae559350d18795448351&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1";
-    fetchMovies(endPoint);
+    fetchMovies(import.meta.env.VITE_URL_MOVIE);
   });
 
   return (
