@@ -25,15 +25,17 @@ const Carousel = ({ url }) => {
         className={`${styles.innerCarousel}`}
       >
         {movieList.map((img) => (
-          <motion.div className={` ${styles.item} `} key={img.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${img.poster_path}`}
-              className={` ${styles.img}`}
-            />
+          <>
+            <motion.div className={` ${styles.item} `} key={img.id}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${img.poster_path}`}
+                className={` ${styles.img}`}
+              />
+            </motion.div>
             <Link to={`/movie?movieID=${img.id}`}>
               <button className="btn btn-primary text-center">ver mas</button>
             </Link>
-          </motion.div>
+          </>
         ))}
       </motion.div>
     </motion.div>
