@@ -12,7 +12,7 @@ const useGetMovies = (url) => {
         setLoading(false), setMovies(response.data.results);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [url]);
   return [movies, loading];
 };
 

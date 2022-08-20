@@ -8,6 +8,11 @@ import useStore from "./../zustand/stores/favoriteMovies";
 import { useEffect } from "react";
 const Login = () => {
   const fetchMovies = useStore((state) => state.fetchMovies);
+  const fetchMoviesLasted = useStore((state) => state.fetchMoviesLasted);
+  const fetchMoviesTopRated = useStore((state) => state.fetchMoviesTopRated);
+  const fetchMoviesMostPopular = useStore(
+    (state) => state.fetchMoviesMostPopular
+  );
   const navigate = useNavigate();
   const handlerSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +47,10 @@ const Login = () => {
     }
   };
   useEffect(() => {
-    fetchMovies(import.meta.env.VITE_URL_MOVIE);
+    fetchMovies(import.meta.env.VITE_URL_LASTEST);
+    fetchMoviesLasted(import.meta.env.VITE_URL_MOVIE);
+    fetchMoviesTopRated(import.meta.env.VITE_URL_TOP_RATED);
+    fetchMoviesMostPopular(import.meta.env.VITE_URL_MOST_POPULAR);
   });
 
   return (

@@ -1,12 +1,12 @@
 import { useRef, useEffect, useState } from "react";
-import useGetMovies from "./../CustomHooks/usGetMovies";
+
 import styles from "./../styles/carousel.module.css";
 import useStore from "./../zustand/stores/favoriteMovies";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-const Carousel = ({ url }) => {
-  const [movieList, loading] = useGetMovies(url);
-  // const movieList = useStore((state) => state.movies);
+const Carousel = ({ title }) => {
+  const moviesList = useStore((state) => state.movies);
+
   const [width, setWidth] = useState(0);
   const carousel = useRef();
   useEffect(() => {
@@ -24,21 +24,15 @@ const Carousel = ({ url }) => {
         dragConstraints={{ right: 0, left: -width }}
         className={`${styles.innerCarousel}`}
       >
-        {movieList.map((img) => (
+        {moviesList.map((img) => (
           <>
             <motion.div className={` ${styles.item} `} key={img.id}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${img.poster_path}`}
                 className={` ${styles.img}`}
               />
-              <Link
-                to={`/movie?movieID=${img.id}`}
-                className="btn w-50 btn-primary text-center"
-              >
-                ver mas
-              </Link>
             </motion.div>
-            {/* <Link
+            <Link
               to={`/movie?movieID=${img.id}`}
               className={`${styles.seeMoreBtn}`}
             >
@@ -46,9 +40,9 @@ const Carousel = ({ url }) => {
                 className={`${styles.btnText} btn btn-primary text-center `}
                 key={img.id}
               >
-                see more
+                View more
               </button>
-            </Link> */}
+            </Link>
           </>
         ))}
       </motion.div>
