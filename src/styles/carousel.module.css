@@ -1,12 +1,15 @@
 .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 20rem;
   min-width: 20rem;
-  padding: 20px;
+  padding: 7px;
 }
 
-img {
+.img {
   width: 100%;
-  height: 100%;
+  height: 90%;
   border-radius: 2rem;
   pointer-events: none;
 }
@@ -17,4 +20,18 @@ img {
 .carousel {
   cursor: grab;
   overflow: hidden;
+}
+.seeMoreBtn {
+  background-color: transparent !important;
+  width: 7rem;
+  height: 2rem;
+  border-radius: 6px;
+  position: relative;
+
+  right: 5rem;
+}
+.btnText {
+  background-color: transparent !important;
+  height: 2rem;
+  width: 7rem;
 }

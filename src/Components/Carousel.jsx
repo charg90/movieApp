@@ -31,10 +31,24 @@ const Carousel = ({ url }) => {
                 src={`https://image.tmdb.org/t/p/w500${img.poster_path}`}
                 className={` ${styles.img}`}
               />
+              <Link
+                to={`/movie?movieID=${img.id}`}
+                className="btn w-50 btn-primary text-center"
+              >
+                ver mas
+              </Link>
             </motion.div>
-            <Link to={`/movie?movieID=${img.id}`}>
-              <button className="btn btn-primary text-center">ver mas</button>
-            </Link>
+            {/* <Link
+              to={`/movie?movieID=${img.id}`}
+              className={`${styles.seeMoreBtn}`}
+            >
+              <button
+                className={`${styles.btnText} btn btn-primary text-center `}
+                key={img.id}
+              >
+                see more
+              </button>
+            </Link> */}
           </>
         ))}
       </motion.div>
