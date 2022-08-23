@@ -3,27 +3,43 @@ import axios from "axios";
 import { devtools } from "zustand/middleware";
 
 const favoritesStore = (set) => ({
-  movies: [],
-  moviesLasted: [],
-  moviesTopRated: [],
-  moviesMostPopular: [],
+  ThisWeekMovies: [],
+  LastMovies: [],
+  TopRatedMovies: [],
+  MostPopularMovies: [],
   favoriteMovies: [],
 
   fetchMovies: async (url) => {
-    const response = await axios.get(url);
-    set({ movies: response.data.results });
+    try {
+      const response = await axios.get(url);
+      set({ ThisWeekMovies: response.data.results });
+    } catch (err) {
+      console.log(err);
+    }
   },
   fetchMoviesLasted: async (url) => {
-    const response = await axios.get(url);
-    set({ moviesLasted: response.data.results });
+    try {
+      const response = await axios.get(url);
+      set({ LastMovies: response.data.results });
+    } catch (err) {
+      console.log(err);
+    }
   },
   fetchMoviesTopRated: async (url) => {
-    const response = await axios.get(url);
-    set({ moviesTopRated: response.data.results });
+    try {
+      const response = await axios.get(url);
+      set({ TopRatedMovies: response.data.results });
+    } catch (err) {
+      console.log(err);
+    }
   },
   fetchMoviesMostPopular: async (url) => {
-    const response = await axios.get(url);
-    set({ moviesPopular: response.data.results });
+    try {
+      const response = await axios.get(url);
+      set({ MostPopularMovies: response.data.results });
+    } catch (error) {
+      console.log("most popular", error);
+    }
   },
 
   addFavorite: (movie) => {

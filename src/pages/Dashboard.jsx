@@ -1,33 +1,34 @@
 import React, { useEffect } from "react";
-
 import useStore from "./../zustand/stores/favoriteMovies";
 import { Navigate } from "react-router-dom";
 import Video from "./../Components/Video";
 import Carousel from "../Components/Carousel";
+import styles from "./../styles/dashboard.module.css";
 const Dashboard = () => {
   const favorite = useStore((state) => state.favoriteMovies);
   const state = useStore((state) => state);
-  const moviesCat = Object.values(state).slice(0, 3);
-  const movieTitle = Object.keys(state);
+  const moviesCat = Object.entries(state).slice(0, 4);
+  const title = moviesCat.map((title) => title[0]);
   let token = sessionStorage.getItem("token");
-  console.log(movieTitle.slice(0, 3));
+
   useEffect(() => {}, [favorite]);
 
   return (
-    <>
+    <div className="container-fluid">
       {!token && <Navigate to="/" />}
       <Video />
 
       {moviesCat.map((mc) => (
-        <Carousel mc={mc} />
-      ))}
+        <>
+          {console.log("hmtl", mc[0].split(/(?=[A-Z])/).join(" "))}
+          <p className={`${styles.titleText} text-white`}>
+            {mc[0].split(/(?=[A-Z])/).join(" ")}
+          </p>
 
-      {/*
-      <Carousel title="This week Movies" />
-      <Carousel title="Lasted Movies" />
-      <Carousel title="Top Rated Movies" />
-      <Carousel title="Most Popular Movies" /> */}
-    </>
+          <Carousel mc={mc} />
+        </>
+      ))}
+    </div>
   );
 };
 

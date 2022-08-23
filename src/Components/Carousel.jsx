@@ -1,12 +1,10 @@
 import { useRef, useEffect, useState } from "react";
-
 import styles from "./../styles/carousel.module.css";
-import useStore from "./../zustand/stores/favoriteMovies";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const Carousel = ({ mc }) => {
-  const moviesList = useStore((state) => state.movies);
+  const movies = mc[1];
 
   const [width, setWidth] = useState(0);
   const carousel = useRef();
@@ -26,7 +24,7 @@ const Carousel = ({ mc }) => {
           dragConstraints={{ right: 0, left: -width }}
           className={`${styles.innerCarousel}`}
         >
-          {mc.map((movie) => {
+          {movies.map((movie) => {
             return (
               <>
                 <motion.div className={` ${styles.item} `} key={movie.id}>

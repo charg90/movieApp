@@ -47,8 +47,8 @@ const Login = () => {
     }
   };
   useEffect(() => {
-    fetchMovies(import.meta.env.VITE_URL_LASTEST);
-    fetchMoviesLasted(import.meta.env.VITE_URL_MOVIE);
+    fetchMovies(import.meta.env.VITE_URL_MOVIE);
+    fetchMoviesLasted(import.meta.env.VITE_URL_LASTEST);
     fetchMoviesTopRated(import.meta.env.VITE_URL_TOP_RATED);
     fetchMoviesMostPopular(import.meta.env.VITE_URL_MOST_POPULAR);
   });

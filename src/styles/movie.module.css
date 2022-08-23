@@ -2,3 +2,10 @@
   background-color: #fffdfa;
   border-radius: 10px;
 }
+.circularProgressBarContainer {
+  width: 8rem;
+  height: 8rem;
+}
+.container {
+  height: 20rem;
+}
