@@ -38,10 +38,10 @@ const Carousel = ({ mc }) => {
                   className={`${styles.seeMoreBtn}`}
                 >
                   <button
-                    className={`${styles.btnText} btn btn-primary text-center `}
+                    className={`${styles.btnContainer} btn btn-primary text-center  d-flex justify-content-center align-items-center`}
                     key={movie.id}
                   >
-                    View more
+                    <span className={`${styles.btnText}`}>View More</span>
                   </button>
                 </Link>
               </>

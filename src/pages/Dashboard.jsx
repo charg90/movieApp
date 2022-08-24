@@ -8,7 +8,7 @@ const Dashboard = () => {
   const favorite = useStore((state) => state.favoriteMovies);
   const state = useStore((state) => state);
   const moviesCat = Object.entries(state).slice(0, 4);
-  const title = moviesCat.map((title) => title[0]);
+
   let token = sessionStorage.getItem("token");
 
   useEffect(() => {}, [favorite]);
@@ -20,7 +20,6 @@ const Dashboard = () => {
 
       {moviesCat.map((mc) => (
         <>
-          {console.log("hmtl", mc[0].split(/(?=[A-Z])/).join(" "))}
           <p className={`${styles.titleText} text-white`}>
             {mc[0].split(/(?=[A-Z])/).join(" ")}
           </p>

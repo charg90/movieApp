@@ -23,15 +23,31 @@
 }
 .seeMoreBtn {
   background-color: transparent !important;
-  width: 7rem;
+  width: 1rem;
   height: 2rem;
   border-radius: 6px;
   position: relative;
 
   right: 5rem;
 }
-.btnText {
+.btnContainer {
   background-color: transparent !important;
+  border: 0.2rem solid;
+  border-radius: 2rem;
+  box-shadow: 0 0 19px rgba(188, 19, 254, 0.7), 0 0 49px rgba(188, 19, 254, 0.7),
+    0 0 109px rgba(188, 19, 254, 0.7);
   height: 2rem;
   width: 7rem;
+}
+.btnContainer:hover {
+  background-color: #2c053b !important;
+  color: #f0f0f0 !important;
+  box-shadow: 0 0 19px rgba(188, 19, 254, 0.7), 0 0 49px rgba(188, 19, 254, 0.7),
+    0 0 109px rgba(188, 19, 254, 0.7);
+  border-color: rgba(188, 19, 254, 0.7) !important;
+}
+.btnText {
+  text-decoration: underline !important;
+  text-shadow: 0 0 19px rgba(188, 19, 254, 0.7),
+    0 0 49px rgba(188, 19, 254, 0.7), 0 0 109px rgba(188, 19, 254, 0.7);
 }

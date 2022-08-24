@@ -8,7 +8,7 @@ import styles from "./../styles/navBar.module.css";
 const Header = () => {
   return (
     <>
-      <header className="d-flex justify-content-center">
+      <header className="d-flex justify-content-around w-100">
         <nav className={` navbar navbar-expand-lg navbar-light  `}>
           <Link
             className={`${styles.navBarLetters} navbar-brand text-white`}
@@ -17,7 +17,7 @@ const Header = () => {
             Movies
           </Link>
           <button
-            className="navbar-toggler"
+            className={`${styles.togglerButton} navbar-toggler `}
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -46,9 +46,9 @@ const Header = () => {
                 </Link>
               </li>
             </ul>
-            <NavFavorite />
+
+            <SearchBar />
           </div>
-          <SearchBar />
         </nav>
       </header>
     </>
