@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Movie from "./pages/Movie";
+import Register from "./pages/Register";
 import Results from "./pages/Results";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/movie" element={<Movie />} />
       <Route path="/movie/:movie" element={<Results />} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 }

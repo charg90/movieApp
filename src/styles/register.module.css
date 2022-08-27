@@ -1,0 +1,47 @@
+.formContainer {
+  width: 75vw;
+}
+.inputLabel {
+  color: #7f7f7f;
+}
+.inputRegister {
+  background-color: transparent !important;
+
+  border-radius: 0px;
+  border: none;
+  border-bottom: 1px solid #7f7f7f;
+}
+
+.inputRegister:focus {
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #bc13fe;
+}
+
+/* xs < 768 */
+@media screen and (max-width: 767px) {
+  .formContainer {
+    width: 75vw;
+  }
+}
+
+/* sm */
+@media screen and (min-width: 768px) {
+  .formContainer {
+    width: 75vw;
+  }
+}
+
+/* md */
+@media screen and (min-width: 941px) {
+  .formContainer {
+    width: 50vw;
+  }
+}
+
+/* lg */
+@media screen and (min-width: 1200px) {
+  .formContainer {
+    width: 25vw;
+  }
+}
