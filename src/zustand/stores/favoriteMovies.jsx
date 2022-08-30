@@ -52,6 +52,9 @@ const favoritesStore = (set) => ({
       favoriteMovies: state.favoriteMovies.filter((f) => f.id !== id),
     }));
   },
+  setProfile: (email) => {
+    set({ userProfile: email });
+  },
 });
 
 const useStore = create(devtools(favoritesStore));

@@ -20,8 +20,6 @@ const Movie = () => {
 
   return (
     <>
-      {!token && <Navigate to="/" />}
-
       {!movie && <p>cargando...</p>}
       {movie && (
         <div

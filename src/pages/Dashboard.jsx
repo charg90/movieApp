@@ -9,13 +9,12 @@ const Dashboard = () => {
   const state = useStore((state) => state);
   const moviesCat = Object.entries(state).slice(0, 4);
 
-  let token = sessionStorage.getItem("token");
-
-  useEffect(() => {}, [favorite]);
+  useEffect(() => {
+    console.log(moviesCat);
+  }, [favorite]);
 
   return (
     <div className="container-fluid">
-      {!token && <Navigate to="/" />}
       <Video />
 
       {moviesCat.map((mc) => (
@@ -24,7 +23,7 @@ const Dashboard = () => {
             {mc[0].split(/(?=[A-Z])/).join(" ")}
           </p>
 
-          <Carousel mc={mc} />
+          <Carousel mc={mc} key={mc[0]} />
         </>
       ))}
     </div>
